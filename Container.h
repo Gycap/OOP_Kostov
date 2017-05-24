@@ -12,7 +12,7 @@ private:
 		T data;
 		element *next;
 	};
-	element *head;
+	element *head, *iterator;
 	int length = 0;
 
 public:
@@ -22,7 +22,7 @@ public:
 		//cout << "The memory has been reserved\n";
 	}
 
-	void PrintC()				//Скорей всего работать не будет
+/*	void PrintC()				//Для классов неприменима
 	{
 		if (head)
 		{
@@ -35,10 +35,10 @@ public:
 			else
 				cout << head->data;
 		}
-		else
-			throw "Invalid Request. Nothing to print, container is empty.\n";
+		//else
+			//throw "Invalid Request. Nothing to print, container is empty.\n";
 	}
-	
+	*/
 	void AddBegin(const T& newBegin)
 	{
 		element *vs;
@@ -57,7 +57,7 @@ public:
 		vs->data = newEnd;
 		vs->next = NULL;
 		if (!head)
-			vs = head;
+			head = vs;
 		else
 		{
 			element *vs1;
@@ -81,8 +81,8 @@ public:
 			--length;
 			//cout << "The result of deleting first element:\n";
 		}
-		else
-			throw "Invalid request. Nothing to delete\n";
+		//else
+			//throw "Invalid request. Nothing to delete\n";
 	}
 
 	void DelLast()
@@ -112,16 +112,16 @@ public:
 			}
 			//cout << "The result of deleting last element:\n";
 		}
-		else
-			throw "Invalid request. Nothing to delete\n";
+		//else
+			//throw "Invalid request. Nothing to delete\n";
 	}
 
 	const T& GetFirst()
 	{
 		if (head)
 			return head->data;
-		else
-			throw "Invalid request. Container is empty.\n";
+		//else
+			//throw "Invalid request. Container is empty.\n";
 	}
 
 	const T& GetLast()
@@ -134,13 +134,13 @@ public:
 				vs = vs->next;
 			return vs->data;
 		}
-		else
-			throw "Invalid request. Container is empty.\n"
+		//else
+			//throw "Invalid request. Container is empty.\n"
 	}
 
-	void GetLength()
+	int GetLength()			//Number of elements in container
 	{
-		cout << "Количество элементов:\n" << length << endl;
+		return length;
 	}
 
 	bool IsEmpty()
@@ -157,9 +157,25 @@ public:
 		}
 	}
 
+	void StartIteration()
+	{
+		iterator = head;
+	}
+
+	const T* Iteration()
+	{
+		if (iterator->next != NULL)
+		{
+			iterator = iterator->next;
+			return &iterator->data;
+		}
+		else return NULL;
+	}
+
 	~Container()
 	{
-		if (head) {
+		if (head) 
+		{
 			while (head != NULL)
 			{
 				element *vs;
