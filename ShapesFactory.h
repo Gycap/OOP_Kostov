@@ -46,8 +46,8 @@ public:
 	}
 	/*static const Polygon& CreatePolygon()
 	{
-		int size = rand() % 20 + 1;
-		Container<Point> polygon1;
-
+		int points_num = rand() % 20 + 1;
+		Container <Point> line;
+		
 	}*/
 };

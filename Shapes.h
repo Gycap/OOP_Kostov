@@ -164,21 +164,19 @@ public:
 		return out << pl1.Print();
 	}
 };
-
-/*class Polygon : public Shape, public Named
+/*
+class Polygon : public Shape, public Named
 {
 private:
 	Container<Point> polygon1;
 	double perimeter;
 public:
-	
 	Polygon() : Named("Polygon")
 	{
 		polygon1.AddBegin(Point());
 		perimeter = 0;
 	}
 	
-
 
 	std::string Print() const
 	{

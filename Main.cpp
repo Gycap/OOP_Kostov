@@ -23,7 +23,7 @@ int main()
 			case 2:ContShapes.AddEnd(ShapesFactory::CreateCircle()); break;
 			case 3:ContShapes.AddEnd(ShapesFactory::CreateRectangle()); break;
 			case 4:ContShapes.AddEnd(ShapesFactory::CreateSquare()); break;
-			case 5:ContShapes.AddBegin(ShapesFactory::CreatePolyline()); break;
+			case 5:ContShapes.AddEnd(ShapesFactory::CreatePolyline()); break;
 			//case 6:ContShapes.AddBegin(ShapesFactory::CreatePolygon()); break;
 			default: break;
 		}
