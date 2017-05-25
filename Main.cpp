@@ -16,15 +16,15 @@ int main()
 	Container <Shape> ContShapes;
 	for (int i = 0; i < 20; i++)
 	{
-		int VarShape = rand()%5 + 1;
+		int VarShape = rand()%6 + 1;
 		switch (VarShape)
 		{
-			case 1:ContShapes.AddEnd(ShapesFactory::CreatePoint()); break;
+			case 1:ContShapes.AddEnd(ShapesFactory::CreatePoint(true)); break;
 			case 2:ContShapes.AddEnd(ShapesFactory::CreateCircle()); break;
 			case 3:ContShapes.AddEnd(ShapesFactory::CreateRectangle()); break;
 			case 4:ContShapes.AddEnd(ShapesFactory::CreateSquare()); break;
 			case 5:ContShapes.AddEnd(ShapesFactory::CreatePolyline()); break;
-			//case 6:ContShapes.AddBegin(ShapesFactory::CreatePolygon()); break;
+			case 6:ContShapes.AddBegin(ShapesFactory::CreatePolygon()); break;
 			default: break;
 		}
 	}

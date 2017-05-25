@@ -8,10 +8,11 @@ using namespace std;
 class ShapesFactory
 {
 public:
-	static Point CreatePoint()
+	static Point CreatePoint(bool onprint)
 	{
 		Point p1(rand(), rand());
-		cout << p1 << endl;
+		if (onprint)
+			cout << p1 << endl;
 		return p1;
 	}
 	static Circle CreateCircle()
@@ -37,17 +38,19 @@ public:
 		int points_num = rand() % 20 + 1;
 		Container <Point> line;
 		for (int i = 0; i < points_num; i++)
-		{
-			line.AddEnd(ShapesFactory::CreatePoint());
-		}
+			line.AddEnd(ShapesFactory::CreatePoint(false));
 		Polyline line_out(line, points_num);
 		cout << line_out << endl;
 		return line_out;
 	}
-	/*static const Polygon& CreatePolygon()
+	static const Polygon& CreatePolygon()
 	{
 		int points_num = rand() % 20 + 1;
 		Container <Point> line;
-		
-	}*/
+		for (int i = 0; i < points_num; i++)
+			line.AddEnd(ShapesFactory::CreatePoint(false));
+		Polygon pl1(line, points_num);
+		std::cout << pl1 << endl;
+		return pl1;
+	}
 };

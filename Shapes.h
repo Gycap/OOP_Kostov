@@ -133,9 +133,7 @@ public:
 		pl1.StartIteration();
 		AddPoint(pl1.GetFirst());
 		for (int i = 1; i < size; i++)
-		{
 			AddPoint(*pl1.Iteration());
-		}
 	}
 
 	void AddPoint(const Point& p2)
@@ -164,7 +162,7 @@ public:
 		return out << pl1.Print();
 	}
 };
-/*
+
 class Polygon : public Shape, public Named
 {
 private:
@@ -177,13 +175,37 @@ public:
 		perimeter = 0;
 	}
 	
+	Polygon(Container<Point>& pol1, const int& size) : Named("Polygon")
+	{
+		perimeter = sqrt( (pol1.GetFirst().x - pol1.GetLast().x) * (pol1.GetFirst().x - pol1.GetLast().x) + (pol1.GetFirst().y - pol1.GetLast().y) * (pol1.GetFirst().y - pol1.GetLast().y) );
+		pol1.StartIteration();
+		AddPoint(pol1.GetFirst());
+		for (int i = 1; i < size; i++)
+			AddPoint(*pol1.Iteration());
+	}
+	void AddPoint(const Point& p1)
+	{
+		if (this->polygon1.IsEmpty())
+		{
+			this->polygon1.AddEnd(p1);
+			return;
+		}
+		else
+		{
+			double x_prev, y_prev;
+			x_prev = this->polygon1.GetLast().x;
+			y_prev = this->polygon1.GetLast().y;
+			this->polygon1.AddEnd(p1);
+			this->perimeter += sqrt( (x_prev - p1.x) * (x_prev - p1.x) + (y_prev - p1.y) * (y_prev - p1.y) );
+		}
+	}
 
 	std::string Print() const
 	{
-		return "\n" + this->GetName() + " Perimeter: " + std::to_string(this->perimeter) + "\n";
+		return "\n" + this->GetName() + ": Perimeter: " + std::to_string(this->perimeter) + "\n";
 	}
 	friend std::ostream& operator<<(std::ostream& out, Polygon& pol1)
 	{
 		return out << pol1.Print();
 	}
-};*/
+};
